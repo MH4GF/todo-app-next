@@ -15,11 +15,12 @@ https://todo-app-next.vercel.app/
 - [ ] CSVインポートによるTODO追加
 - [x] vercelへのデプロイ
 
-## Getting Started
-
-First, run the development server:
+## Development
 
 ```bash
+cp .env.local.sample .env.local
+# 環境変数それぞれを設定した後にyarn dev
+
 yarn dev
 ```
 
