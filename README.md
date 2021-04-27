@@ -2,6 +2,10 @@
 
 TODOリストをnextで実装してみる
 
+## deployed on vercel
+
+https://todo-app-next.vercel.app/
+
 ## Features
 
 - [ ] 各種ツールの導入(TypeScript, ESLint, Jest)
@@ -9,6 +13,7 @@ TODOリストをnextで実装してみる
 - [ ] Googleアカウントによる認証
 - [ ] スプレッドシートによるデータ永続化
 - [ ] CSVインポートによるTODO追加
+- [x] vercelへのデプロイ
 
 ## Getting Started
 
