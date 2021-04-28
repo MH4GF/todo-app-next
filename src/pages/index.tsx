@@ -1,8 +1,8 @@
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/client";
-import { NextPage } from "next";
+import { NextPageWithConfig } from "~/types/layout";
 
-const Page: NextPage = () => {
+const Page: NextPageWithConfig = () => {
   const [session, loading] = useSession();
 
   return (
@@ -22,5 +22,7 @@ const Page: NextPage = () => {
     </>
   );
 };
+
+Page.requireAuth = false;
 
 export default Page;

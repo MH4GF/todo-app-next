@@ -1,8 +1,8 @@
 import React from "react";
-import { NextPage } from "next";
 import { TodosListPage } from "~/components/pages/Todos/TodosListPage";
+import { NextPageWithConfig } from "~/types/layout";
 
-const Page: NextPage = () => {
+const Page: NextPageWithConfig = () => {
   return <TodosListPage />;
 };
 
