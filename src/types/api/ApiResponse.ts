@@ -1,3 +1,7 @@
-export type ApiResponse<T> = {
-  result: T;
-};
+export type ApiResponse<T> =
+  | {
+      result: T;
+    }
+  | {
+      errors: string[];
+    };

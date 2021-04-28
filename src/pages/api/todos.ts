@@ -1,12 +1,18 @@
 import { Todo } from "~/types/Todo";
 import { NextApiRequest, NextApiResponse } from "next";
 import { ApiResponse } from "~/types/api/ApiResponse";
+import { getSession } from "next-auth/client";
 
-export default (
+export default async (
   req: NextApiRequest,
   res: NextApiResponse<ApiResponse<Todo[]>>
 ) => {
-  res.status(200).json({ result: DummyTodoData });
+  const session = await getSession({ req });
+  if (session) {
+    res.status(200).json({ result: DummyTodoData });
+  } else {
+    res.status(401).json({ errors: ["Not Authorized"] });
+  }
 };
 
 const DummyTodoData: Todo[] = [
