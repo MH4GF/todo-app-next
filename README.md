@@ -8,9 +8,9 @@ https://todo-app-next.vercel.app/
 
 ## Features
 
-- [ ] 各種ツールの導入(TypeScript, ESLint, Jest)
+- [x] 各種ツールの導入(TypeScript, ESLint, Jest)
 - [ ] TODOのCRUD, 状態遷移(NotStarted, InProgress, Completed)
-- [ ] Googleアカウントによる認証
+- [x] Googleアカウントによる認証
 - [ ] スプレッドシートによるデータ永続化
 - [ ] CSVインポートによるTODO追加
 - [x] vercelへのデプロイ
