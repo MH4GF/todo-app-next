@@ -1,8 +1,7 @@
 import React, { Fragment } from "react";
 import { useTodosList } from "~/hooks/usecases/useTodosList";
 
-export type Props = {};
-export const TodosListPage: React.FC<Props> = (props: Props) => {
+export const TodosListPage: React.FC = () => {
   const { state } = useTodosList();
 
   return (
