@@ -7,9 +7,16 @@ export const TodosListPage: React.FC<Props> = (props: Props) => {
 
   return (
     <Fragment>
-      {state.result.map((todo) => (
-        <div key={todo.id}>{todo.content}</div>
-      ))}
+      {state.type === "loading" ? (
+        <div>TODO: loading画面をいい感じにする</div>
+      ) : state.type === "error" ? (
+        <div>
+          error: {state.errorMessage} TODO: エラーメッセージ表示をいい感じにする
+        </div>
+      ) : (
+        state.result.map((todo) => <div key={todo.id}>{todo.content}</div>)
+      )}
+      {}
     </Fragment>
   );
 };
