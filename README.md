@@ -28,3 +28,4 @@ yarn dev
 ## 参考資料
 
 - [プログラミングTypeScript ――スケールするJavaScriptアプリケーション開発](https://www.oreilly.co.jp/books/9784873119045/)
+- [Today I Learned(実装時に詰まった際のメモ)](etc/til)
