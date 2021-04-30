@@ -3,6 +3,8 @@ import { getSession, Provider } from "next-auth/client";
 import { useRouter } from "next/router";
 import { AppProps } from "next/app";
 import { NextPageWithConfig } from "~/types/layout";
+import { ThemeProvider } from "@material-ui/styles";
+import theme from "~/styles/theme";
 
 const MyApp = (appProps: AppProps) => {
   const router = useRouter();
@@ -23,7 +25,9 @@ const MyApp = (appProps: AppProps) => {
 
   return (
     <Provider session={appProps.pageProps.session}>
-      <Component {...appProps.pageProps} />
+      <ThemeProvider theme={theme}>
+        <Component {...appProps.pageProps} />
+      </ThemeProvider>
     </Provider>
   );
 };

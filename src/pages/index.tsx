@@ -1,24 +1,27 @@
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/client";
 import { NextPageWithConfig } from "~/types/layout";
+import { Button, Grid, Link, Typography } from "@material-ui/core";
 
 const Page: NextPageWithConfig = () => {
   const [session, loading] = useSession();
 
   return (
     <>
-      {!session && (
-        <>
-          Not signed in <br />
-          <button onClick={() => signIn()}>Sign in</button>
-        </>
-      )}
-      {session && (
-        <>
-          Signed in as {session.user.email} <br />
-          <button onClick={() => signOut()}>Sign out</button>
-        </>
-      )}
+      <Typography variant="h1" align="center" gutterBottom>
+        todo-app-next
+      </Typography>
+      <Grid container justify="center">
+        {session ? (
+          <Button variant="contained" color="default">
+            <Link href="/todos">show todos</Link>
+          </Button>
+        ) : (
+          <Button variant="contained" color="primary" onClick={() => signIn()}>
+            Sign in with Google
+          </Button>
+        )}
+      </Grid>
     </>
   );
 };
