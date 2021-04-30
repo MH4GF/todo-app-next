@@ -1,5 +1,5 @@
 import React from "react";
-import { signIn, signOut, useSession } from "next-auth/client";
+import { signIn, useSession } from "next-auth/client";
 import { NextPageWithConfig } from "~/types/layout";
 import { Button, Grid, Link, Typography } from "@material-ui/core";
 
