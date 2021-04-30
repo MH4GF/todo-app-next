@@ -1,0 +1,32 @@
+name: CI
+
+env:
+  TZ: Asia/Tokyo
+
+on: [pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    timeout-minutes: 10
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # TODO: 暇があればキャッシュ
+      - name: Install dependencies packages
+        run: yarn
+
+      - name: Building Test
+        run: yarn build
+
+      - name: ESLint Check
+        run: yarn lint

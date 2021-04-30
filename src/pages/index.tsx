@@ -4,7 +4,7 @@ import { NextPageWithConfig } from "~/types/layout";
 import { Button, Grid, Link, Typography } from "@material-ui/core";
 
 const Page: NextPageWithConfig = () => {
-  const [session, loading] = useSession();
+  const [session] = useSession();
 
   return (
     <>
