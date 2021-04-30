@@ -8,7 +8,7 @@ https://todo-app-next.vercel.app/
 
 ## Features
 
-- [x] 各種ツールの導入(TypeScript, ESLint, Jest)
+- [x] 各種ツールの導入(TypeScript, ESLint, Prettier, Jest, GitHub Actions)
 - [x] Material-UIの導入
 - [ ] TODOのCRUD, 状態遷移(NotStarted, InProgress, Completed)
 - [x] Googleアカウントによる認証
