@@ -1,4 +1,4 @@
-# 取得したい
+# apiでNextAuthのセッションを取得したい
 
 getSession()にreqを引数として渡せば良い。
 ``` 
