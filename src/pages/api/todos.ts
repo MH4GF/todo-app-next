@@ -5,6 +5,8 @@ import { getGoogleJWTToken } from "~/util/getGoogleJWTToken";
 import { useTodoItems } from "~/hooks/usecases/api/spreadSheets/useTodoItems";
 import nextConnect from "next-connect";
 import { requireLogin } from "~/util/requireLogin";
+import { useSpreadSheetClient } from "~/hooks/usecases/api/spreadSheets/useSpreadSheetClient";
+import { getSession } from "next-auth/client";
 
 const handler = nextConnect<
   NextApiRequest,
@@ -13,8 +15,14 @@ const handler = nextConnect<
   .use(requireLogin)
   .get(async (req, res) => {
     const token = await getGoogleJWTToken(req);
+    const sheets = await useSpreadSheetClient(token.accessToken);
+    const session = await getSession({ req });
+
     // TODO: エラーハンドリング
-    const todoItems = await useTodoItems(token.accessToken);
+    const todoItems =
+      session && session.spreadSheetId
+        ? await useTodoItems(sheets, session.spreadSheetId)
+        : [];
 
     res.status(200).json({ result: todoItems });
   });

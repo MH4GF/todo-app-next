@@ -1,14 +1,14 @@
-import useGoogleOAuthClient from "~/hooks/usecases/useGoogleOAuthClient";
-import { google } from "googleapis";
+import { sheets_v4 } from "googleapis";
 import { Todo } from "~/types/Todo";
 import { Phase } from "~/types/Phase";
 
-export const useTodoItems = async (accessToken: string): Promise<Todo[]> => {
-  const client = await useGoogleOAuthClient;
-  client.setCredentials({ access_token: accessToken });
+type IUseTodoItems = (
+  sheets: sheets_v4.Sheets,
+  spreadSheetId: string
+) => Promise<Todo[]>;
 
-  const sheets = google.sheets({ version: "v4", auth: client });
-  const spreadSheetId = "1nsisgABTahfZPAAJauOhR4dq4i0qXhbV1cOFXozKiR4";
+// TODO: テスト書きたいですね
+export const useTodoItems: IUseTodoItems = async (sheets, spreadSheetId) => {
   const spreadSheet = await sheets.spreadsheets.get({
     spreadsheetId: spreadSheetId,
     includeGridData: true,
