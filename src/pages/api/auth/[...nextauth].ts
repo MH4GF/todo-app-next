@@ -1,5 +1,7 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
+import { useFindOrCreateSpreadSheetId } from "~/hooks/usecases/api/drive/useFindOrCreateSpreadSheetId";
+import { useGoogleDriveClient } from "~/hooks/usecases/api/drive/useGoogleDriveClient";
 
 // TODO: 実行時には必ず環境変数が存在する感じにしたい 環境変数を扱う関数を作って、ビルド時に存在確認をしてなければコケるようにしたい
 export default NextAuth({
@@ -10,7 +12,7 @@ export default NextAuth({
       authorizationUrl:
         "https://accounts.google.com/o/oauth2/v2/auth?prompt=consent&access_type=offline&response_type=code",
       scope:
-        "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive",
     }),
   ],
   jwt: {
@@ -25,6 +27,15 @@ export default NextAuth({
         token.accessToken = account.accessToken;
       }
       return token;
+    },
+    async session(session, token) {
+      console.log(token);
+      if (token.accessToken && typeof token.accessToken === "string") {
+        const drive = await useGoogleDriveClient(token.accessToken);
+        session.spreadSheetId = await useFindOrCreateSpreadSheetId(drive);
+      }
+
+      return session;
     },
   },
 });
