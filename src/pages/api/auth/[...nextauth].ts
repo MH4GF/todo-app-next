@@ -29,7 +29,6 @@ export default NextAuth({
       return token;
     },
     async session(session, token) {
-      console.log(token);
       if (token.accessToken && typeof token.accessToken === "string") {
         const drive = await useGoogleDriveClient(token.accessToken);
         session.spreadSheetId = await useFindOrCreateSpreadSheetId(drive);

@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { useTodosList } from "~/hooks/usecases/useTodosList";
-import { TodoCard } from "~/components/Todos/TodoCard";
 import Skeleton from "react-loading-skeleton";
+import { TodoColumnBoard } from "~/components/Todos/TodoColumnBoard";
 
 export const TodosListPage: React.FC = () => {
   const { state } = useTodosList();
@@ -15,7 +15,7 @@ export const TodosListPage: React.FC = () => {
           error: {state.errorMessage} TODO: エラーメッセージ表示をいい感じにする
         </div>
       ) : (
-        state.result.map((todo) => <TodoCard key={todo.id} todo={todo} />)
+        <TodoColumnBoard todos={state.result} />
       )}
       {}
     </Fragment>
