@@ -3,6 +3,7 @@ import { Grid, Typography } from "@material-ui/core";
 import { Todo } from "~/types/Todo";
 import { TodoCard } from "~/components/Todos/TodoCard";
 import { Phase } from "~/types/Phase";
+import { TodoAddButton } from "~/components/Todos/TodoAddButton";
 
 export type Props = {
   todos: Todo[];
@@ -18,6 +19,9 @@ export const TodoColumn: React.FC<Props> = (props: Props) => {
             <TodoCard todo={todo} />
           </Grid>
         ))}
+        <Grid item>
+          <TodoAddButton />
+        </Grid>
       </Grid>
     </Grid>
   );
