@@ -7,5 +7,5 @@ export default {
 };
 
 export const Default = (): JSX.Element => {
-  return <TodoAddButton />;
+  return <TodoAddButton onClick={() => {}} />;
 };

@@ -8,13 +8,17 @@ const useStyles = makeStyles({
   },
 });
 
-export const TodoAddButton = () => {
+type Props = {
+  onClick: () => void;
+};
+
+export const TodoAddButton = (props: Props) => {
   const classes = useStyles();
 
   // TODO: +ボタンのベースラインが高すぎる気がする
   return (
     <Paper elevation={0}>
-      <Button>
+      <Button onClick={props.onClick}>
         <Typography className={classes.text} color="textSecondary">
           <AddIcon className={classes.text} />
           new
