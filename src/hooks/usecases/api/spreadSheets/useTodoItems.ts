@@ -8,6 +8,7 @@ type IUseTodoItems = (
 ) => Promise<Todo[]>;
 
 // TODO: テスト書きたいですね
+// というかこのロジックhooksじゃなくない？？
 export const useTodoItems: IUseTodoItems = async (sheets, spreadSheetId) => {
   const spreadSheet = await sheets.spreadsheets.get({
     spreadsheetId: spreadSheetId,

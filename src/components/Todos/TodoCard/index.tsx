@@ -1,9 +1,16 @@
-import React from "react";
-import { Card, CardContent, makeStyles, Typography } from "@material-ui/core";
+import React, { ChangeEvent, useEffect, useState } from "react";
+import {
+  Card,
+  CardContent,
+  makeStyles,
+  TextField,
+  Typography,
+} from "@material-ui/core";
 import { Todo } from "~/types/Todo";
+import { useUpdateTodo } from "~/hooks/usecases/Todo/useUpdateTodo";
 
 const useStyles = makeStyles({
-  content: {
+  contentForm: {
     fontSize: 20,
   },
   phase: {
@@ -15,12 +22,27 @@ export type Props = {
 };
 export const TodoCard: React.FC<Props> = (props: Props) => {
   const classes = useStyles();
+  const [todo, setTodo] = useState(props.todo);
+  const { state, actions } = useUpdateTodo(todo);
+  const changeContentValue = (e: ChangeEvent<HTMLInputElement>) => {
+    setTodo({
+      content: e.target.value,
+      id: todo.id,
+      phase: todo.phase,
+    });
+    // TODO: なんか古いtodoが渡されてる
+    actions.updateTodo(todo);
+  };
+
   return (
     <Card>
       <CardContent>
-        <Typography className={classes.content}>
-          {props.todo.content}
-        </Typography>
+        <TextField
+          className={classes.contentForm}
+          value={todo.content}
+          InputProps={{ disableUnderline: true }}
+          onChange={changeContentValue}
+        />
         <Typography className={classes.phase} color="textSecondary">
           {props.todo.phase}
         </Typography>
