@@ -12,7 +12,7 @@ https://todo-app-next.vercel.app/
 - [x] Material-UIの導入
 - [ ] TODOのCRUD, 状態遷移(NotStarted, InProgress, Completed)
 - [x] Googleアカウントによる認証
-- [ ] スプレッドシートによるデータ永続化
+- [x] prisma/Heroku Postgresによるデータ永続化
 - [ ] CSVインポートによるTODO追加
 - [x] vercelへのデプロイ
 

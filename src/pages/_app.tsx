@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { getSession, Provider } from "next-auth/client";
+import { getSession, SessionProvider } from "next-auth/react";
 import { useRouter } from "next/router";
 import { AppProps } from "next/app";
 import { NextPageWithConfig } from "~/types/layout";
@@ -24,11 +24,11 @@ const MyApp = (appProps: AppProps) => {
   }, []);
 
   return (
-    <Provider session={appProps.pageProps.session}>
+    <SessionProvider session={appProps.pageProps.session}>
       <ThemeProvider theme={theme}>
         <Component {...appProps.pageProps} />
       </ThemeProvider>
-    </Provider>
+    </SessionProvider>
   );
 };
 

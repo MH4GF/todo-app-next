@@ -1,10 +1,10 @@
 import React from "react";
-import { signIn, useSession } from "next-auth/client";
+import { signIn, useSession } from "next-auth/react";
 import { NextPageWithConfig } from "~/types/layout";
 import { Button, Grid, Link, Typography } from "@material-ui/core";
 
 const Page: NextPageWithConfig = () => {
-  const [session] = useSession();
+  const { data: session } = useSession();
 
   return (
     <>
