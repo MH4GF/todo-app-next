@@ -9,7 +9,7 @@ export default {
 export const Default = (): JSX.Element => {
   const mockProps: Props = {
     todo: {
-      id: 1,
+      id: "cktr5gihl00082pjvaxmm9nfw",
       content: "waowao",
       phase: "InProgress",
     },

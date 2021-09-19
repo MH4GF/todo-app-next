@@ -15,7 +15,7 @@ export const TodoColumn: React.FC<Props> = (props: Props) => {
   // 入力が終わったら非同期で保存する
   // 保存が終わるまではブラウザを閉じようとするとええんか？を出す
   const addNewTodo = () => {
-    setTodos([...todos, { id: 5, content: "", phase: props.phase }]);
+    setTodos([...todos, { id: "", content: "", phase: props.phase }]);
   };
 
   return (

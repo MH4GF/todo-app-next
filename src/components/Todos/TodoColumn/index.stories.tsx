@@ -10,17 +10,17 @@ export const Default = (): JSX.Element => {
   const mockProps: Props = {
     todos: [
       {
-        id: 1,
+        id: "cktr5gihl00082pjvaxmm9nfw",
         content: "waowao",
         phase: "InProgress",
       },
       {
-        id: 2,
+        id: "cktr5gihl00082pjvaxmm9nf2",
         content: "hogehoge",
         phase: "NotStarted",
       },
       {
-        id: 3,
+        id: "cktr5gihl00082pjvaxmm9nf3",
         content: "ponpoko",
         phase: "Completed",
       },
