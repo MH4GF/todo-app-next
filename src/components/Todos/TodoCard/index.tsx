@@ -29,6 +29,7 @@ export const TodoCard: React.FC<Props> = (props: Props) => {
       content: e.target.value,
       id: todo.id,
       phase: todo.phase,
+      user: todo.user,
     });
     // TODO: なんか古いtodoが渡されてる
     actions.updateTodo(todo);

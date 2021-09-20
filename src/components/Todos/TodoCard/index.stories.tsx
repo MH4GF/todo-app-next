@@ -12,6 +12,9 @@ export const Default = (): JSX.Element => {
       id: "cktr5gihl00082pjvaxmm9nfw",
       content: "waowao",
       phase: "InProgress",
+      user: {
+        id: "cktr5gihl00082pjvaxmm9nfd",
+      },
     },
   };
 
