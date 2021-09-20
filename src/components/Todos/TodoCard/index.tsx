@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -31,7 +31,10 @@ export const TodoCard: React.FC<Props> = (props: Props) => {
       phase: todo.phase,
       user: todo.user,
     });
-    // TODO: なんか古いtodoが渡されてる
+  };
+
+  // TODO: 送信が終わっていない場合はアラートを出す
+  const updateTodo = () => {
     actions.updateTodo(todo);
   };
 
@@ -43,6 +46,7 @@ export const TodoCard: React.FC<Props> = (props: Props) => {
           value={todo.content}
           InputProps={{ disableUnderline: true }}
           onChange={changeContentValue}
+          onBlur={updateTodo}
         />
         <Typography className={classes.phase} color="textSecondary">
           {props.todo.phase}

@@ -19,7 +19,6 @@ export const useUpdateTodo: IUseUpdateTodo = (todo) => {
       return;
     }
     setLoading(true);
-    console.dir(params);
 
     try {
       const res = await axios.patch<Todo>(`/api/todos/${params.id}`, params);
