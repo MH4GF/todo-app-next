@@ -11,7 +11,7 @@ const Page: NextPageWithConfig = () => {
       <Typography variant="h1" align="center" gutterBottom>
         todo-app-next
       </Typography>
-      <Grid container justify="center">
+      <Grid container justifyContent="center">
         {session ? (
           <Button variant="contained" color="default">
             <Link href="/todos">show todos</Link>

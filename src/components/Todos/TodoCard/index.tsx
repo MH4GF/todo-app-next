@@ -29,8 +29,12 @@ export const TodoCard: React.FC<Props> = (props: Props) => {
       content: e.target.value,
       id: todo.id,
       phase: todo.phase,
+      user: todo.user,
     });
-    // TODO: なんか古いtodoが渡されてる
+  };
+
+  // TODO: 送信が終わっていない場合はアラートを出す
+  const updateTodo = () => {
     actions.updateTodo(todo);
   };
 
@@ -42,6 +46,7 @@ export const TodoCard: React.FC<Props> = (props: Props) => {
           value={todo.content}
           InputProps={{ disableUnderline: true }}
           onChange={changeContentValue}
+          onBlur={updateTodo}
         />
         <Typography className={classes.phase} color="textSecondary">
           {props.todo.phase}
