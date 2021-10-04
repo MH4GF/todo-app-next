@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Typography } from "@material-ui/core";
+import styled from "styled-components";
 import { Todo } from "~/types/Todo";
 import { TodoCard } from "~/components/Todos/TodoCard";
 import { Phase } from "~/types/Phase";
@@ -25,19 +25,15 @@ export const TodoColumn: React.FC<Props> = (props: Props) => {
     }
   };
 
+  const Typography = styled.p``;
+
   return (
-    <Grid>
+    <>
       <Typography>{props.phase}</Typography>
-      <Grid container spacing={2} direction="column">
-        {todos.map((todo) => (
-          <Grid key={todo.id} item>
-            <TodoCard todo={todo} />
-          </Grid>
-        ))}
-        <Grid item>
-          <TodoAddButton onClick={addNewTodo} />
-        </Grid>
-      </Grid>
-    </Grid>
+      {todos.map((todo) => (
+        <TodoCard key={todo.id} todo={todo} />
+      ))}
+      <TodoAddButton onClick={addNewTodo} />
+    </>
   );
 };

@@ -1,29 +1,20 @@
 import React from "react";
-import { Button, makeStyles, Paper, Typography } from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
-
-const useStyles = makeStyles({
-  text: {
-    fontSize: 14,
-  },
-});
+import styled from "styled-components";
 
 type Props = {
   onClick: () => void;
 };
 
-export const TodoAddButton = (props: Props) => {
-  const classes = useStyles();
+const Container = styled.div``;
+const Button = styled.button``;
+const Typography = styled.p``;
 
-  // TODO: +ボタンのベースラインが高すぎる気がする
+export const TodoAddButton = (props: Props) => {
   return (
-    <Paper elevation={0}>
+    <Container>
       <Button onClick={props.onClick}>
-        <Typography className={classes.text} color="textSecondary">
-          <AddIcon className={classes.text} />
-          new
-        </Typography>
+        <Typography>new</Typography>
       </Button>
-    </Paper>
+    </Container>
   );
 };
