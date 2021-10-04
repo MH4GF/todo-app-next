@@ -1,17 +1,31 @@
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { ServerStyleSheets } from "@material-ui/styles";
+import { ServerStyleSheet } from "styled-components";
 
-class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx);
-    return { ...initialProps };
+type Props = {
+  styleTags: any;
+};
+
+export default class MyDocument extends Document<Props> {
+  static getInitialProps({ renderPage }) {
+    const sheet = new ServerStyleSheet();
+
+    const page = renderPage(
+      (App) => (props) => sheet.collectStyles(<App {...props} />)
+    );
+
+    const styleTags = sheet.getStyleElement();
+
+    return { ...page, styleTags };
   }
 
   render() {
     return (
-      <Html>
-        <Head />
+      <Html lang="ja">
+        <Head>
+          <meta charSet="utf-8" />
+          {this.props.styleTags}
+        </Head>
         <body>
           <Main />
           <NextScript />
@@ -20,23 +34,3 @@ class MyDocument extends Document {
     );
   }
 }
-
-MyDocument.getInitialProps = async (ctx) => {
-  const sheets = new ServerStyleSheets();
-  const originalRenderPage = ctx.renderPage;
-  ctx.renderPage = () =>
-    originalRenderPage({
-      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
-    });
-
-  const initialProps = await Document.getInitialProps(ctx);
-  return {
-    ...initialProps,
-    styles: [
-      ...React.Children.toArray(initialProps.styles),
-      sheets.getStyleElement(),
-    ],
-  };
-};
-
-export default MyDocument;

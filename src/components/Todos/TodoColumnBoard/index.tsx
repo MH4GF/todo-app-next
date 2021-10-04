@@ -1,5 +1,4 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
 import { Todo } from "~/types/Todo";
 import { TodoColumn } from "~/components/Todos/TodoColumn";
 import { Phase } from "~/types/Phase";
@@ -25,14 +24,12 @@ export const TodoColumnBoard: React.FC<Props> = (props: Props) => {
   );
 
   return (
-    <Grid container spacing={2}>
+    <>
       {Object.entries(groupedByTodos).map((ary) => {
         return (
-          <Grid item xs={3} key={ary[0]}>
-            <TodoColumn phase={ary[0] as Phase} todos={ary[1]} />
-          </Grid>
+          <TodoColumn key={ary[0]} phase={ary[0] as Phase} todos={ary[1]} />
         );
       })}
-    </Grid>
+    </>
   );
 };
