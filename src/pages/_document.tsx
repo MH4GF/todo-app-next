@@ -3,6 +3,7 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
 type Props = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   styleTags: any;
 };
 
